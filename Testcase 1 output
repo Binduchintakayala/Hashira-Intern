@@ -1,0 +1,5 @@
+Test case 1:
+Key 1: Base 10, Value 4 => Decimal: 4
+Key 2: Base 2, Value 111 => Decimal: 7
+Key 3: Base 10, Value 12 => Decimal: 12
+Key 6: Base 4, Value 213 => Decimal: 39
