@@ -1,0 +1,41 @@
+import java.math.BigInteger;
+import java.util.LinkedHashMap;
+import java.util.Map;
+public class BaseConversion {
+    public static void main(String[] args) {
+        Map<String, Map<String, String>> input1 = new LinkedHashMap<>();
+        input1.put("1", Map.of("base", "10", "value", "4"));
+        input1.put("2", Map.of("base", "2", "value", "111"));
+        input1.put("3", Map.of("base", "10", "value", "12"));
+        input1.put("6", Map.of("base", "4", "value", "213"));
+        System.out.println("Test case 1:");
+        processInput(input1);
+        Map<String, Map<String, String>> input2 = new LinkedHashMap<>();
+        input2.put("1", Map.of("base", "6", "value", "13444211440455345511"));
+        input2.put("2", Map.of("base", "15", "value", "aed7015a346d635"));
+        input2.put("3", Map.of("base", "15", "value", "6aeeb69631c227c"));
+        input2.put("4", Map.of("base", "16", "value", "e1b5e05623d881f"));
+        input2.put("5", Map.of("base", "8", "value", "316034514573652620673"));
+        input2.put("6", Map.of("base", "3", "value", "2122212201122002221120200210011020220200"));
+        input2.put("7", Map.of("base", "3", "value", "20120221122211000100210021102001201112121"));
+        input2.put("8", Map.of("base", "6", "value", "20220554335330240002224253"));
+        input2.put("9", Map.of("base", "12", "value", "45153788322a1255483"));
+        input2.put("10", Map.of("base", "7", "value", "1101613130313526312514143"));
+        System.out.println("\nTest case 2:");
+        processInput(input2);
+    }
+    private static void processInput(Map<String, Map<String, String>> data) {
+        for (String key : data.keySet()) {
+            Map<String, String> entry = data.get(key);
+            String baseStr = entry.get("base");
+            String value = entry.get("value");
+            int base = Integer.parseInt(baseStr);
+            try {
+                BigInteger decimalValue = new BigInteger(value, base);
+                System.out.println("Key " + key + ": Base " + base + ", Value " + value + " => Decimal: " + decimalValue);
+            } catch (NumberFormatException e) {
+                System.out.println("Key " + key + ": Invalid number or base for value '" + value + "' with base " + base);
+            }
+        }
+    }
+}
